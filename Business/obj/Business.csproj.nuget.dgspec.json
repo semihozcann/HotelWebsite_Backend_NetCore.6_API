@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Business\\Business.csproj": {}
+    "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Business\\Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Business\\Business.csproj": {
+    "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Business\\Business.csproj",
+        "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\semih\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Business\\obj\\",
+        "outputPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

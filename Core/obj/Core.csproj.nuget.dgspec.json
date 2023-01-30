@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Core\\Core.csproj": {}
+    "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Core\\Core.csproj": {
+    "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\semih\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Ders Notları\\HotelWebsiteBackend\\Core\\obj\\",
+        "outputPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\HotelWebsiteBackend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
