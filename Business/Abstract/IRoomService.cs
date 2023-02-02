@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IRoomService
     {
         IDataResult<List<Room>> GetAll();
-        IDataResult<Room> Get();
+        IDataResult<Room> Get(int id);
         IResult Add(Room room);
         IResult Update(Room room);
         IResult Delete(Room room);

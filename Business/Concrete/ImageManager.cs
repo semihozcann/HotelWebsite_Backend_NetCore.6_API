@@ -35,22 +35,25 @@ namespace Business.Concrete
 
         public IResult Delete(Image image)
         {
-            throw new NotImplementedException();
+            _imageDal.Delete(image);
+            return new SuccessResult(Messages.ImageDeleted);
         }
 
-        public IDataResult<Image> Get()
+        public IDataResult<Image> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Image>(_imageDal.Get(i => i.Id == id), Messages.ImageGeted);
         }
 
         public IDataResult<List<Image>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Image>>(_imageDal.GetAll(), Messages.ImagesListed);
         }
 
+        [ValidationAspect(typeof(ImageValidator))]
         public IResult Update(Image image)
         {
-            throw new NotImplementedException();
+            _imageDal.Update(image);
+            return new SuccessResult(Messages.ImageUpdated);
         }
     }
 }

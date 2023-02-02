@@ -1,10 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Concrete;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
+using Entities.DTOs.RoomType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +27,7 @@ namespace Business.Concrete
             _roomTypeDal = roomTypeDal;
         }
 
-
+        [ValidationAspect(typeof(RoomTypeValidator))]
         public IResult Add(RoomType roomType)
         {
             _roomTypeDal.Add(roomType);
@@ -33,22 +36,30 @@ namespace Business.Concrete
 
         public IResult Delete(RoomType roomType)
         {
-            throw new NotImplementedException();
+            _roomTypeDal.Delete(roomType);
+            return new SuccessResult(Messages.RoomTypeDeleted);
         }
 
-        public IDataResult<RoomType> Get()
+        public IDataResult<RoomType> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<RoomType>(_roomTypeDal.Get(r => r.Id == id), Messages.RoomTypeGeted);
         }
 
         public IDataResult<List<RoomType>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<RoomType>>(_roomTypeDal.GetAll(), Messages.RoomTypesListed);
         }
 
+        public IDataResult<List<RoomTypeDetailDto>> GetRoomTypeDetailDtos()
+        {
+            return new SuccessDataResult<List<RoomTypeDetailDto>>(_roomTypeDal.GetRoomTypeDetailDtos(), Messages.RoomTypeDetailDtoListed);
+        }
+
+        [ValidationAspect(typeof(RoomTypeValidator))]
         public IResult Update(RoomType roomType)
         {
-            throw new NotImplementedException();
+            _roomTypeDal.Update(roomType);
+            return new SuccessResult(Messages.RoomTypeUpdated);
         }
     }
 }

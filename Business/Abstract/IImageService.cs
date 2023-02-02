@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IImageService
     {
         IDataResult<List<Image>> GetAll();
-        IDataResult<Image> Get();
+        IDataResult<Image> Get(int id);
         IResult Add(Image image);
         IResult Update(Image image);
         IResult Delete(Image image);

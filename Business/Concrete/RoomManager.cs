@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Concrete;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
@@ -23,30 +26,33 @@ namespace Business.Concrete
             _roomDal = roomDal;
         }
 
+        [ValidationAspect(typeof(RoomValidator))]
         public IResult Add(Room room)
         {
             _roomDal.Add(room);
-            return new SuccessResult("Oda Eklendi");
+            return new SuccessResult(Messages.RoomAdded);
         }
 
         public IResult Delete(Room room)
         {
-            throw new NotImplementedException();
+            _roomDal.Delete(room);
+            return new SuccessResult(Messages.RoomDeleted);
         }
 
-        public IDataResult<Room> Get()
+        public IDataResult<Room> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Room>(_roomDal.Get(r => r.Id == id), Messages.RoomGeted);
         }
 
         public IDataResult<List<Room>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Room>>(_roomDal.GetAll(), Messages.RoomsListed);
         }
 
         public IResult Update(Room room)
         {
-            throw new NotImplementedException();
+            _roomDal.Update(room);
+            return new SuccessResult(Messages.RoomUpdated);
         }
     }
 }
