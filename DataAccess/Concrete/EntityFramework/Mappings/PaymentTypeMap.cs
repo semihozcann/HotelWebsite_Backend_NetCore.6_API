@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,9 +16,24 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
-            builder.Property(p => p.Name).IsRequired();
-            builder.Property(p => p.Name).HasMaxLength(50);
+            builder.Property(r => r.Name).IsRequired();
+            builder.Property(r => r.Name).HasMaxLength(50);
+            builder.Property(r => r.CreatedDate).IsRequired();
+            builder.Property(r => r.UpdatedDate);
             builder.ToTable("PaymentTypes");
+
+            builder.HasData(
+                new PaymentType
+                {
+                    Id = 1,
+                    Name = "Otelde Ödeme"
+                },
+                new PaymentType
+                {
+                    Id = 2,
+                    Name = "Kredi Kartı İle Ödeme"
+                }
+                );
         }
     }
 }

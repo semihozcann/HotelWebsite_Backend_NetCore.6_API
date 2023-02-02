@@ -16,11 +16,12 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.HasKey(r => r.Id);
             builder.Property(r => r.Id).ValueGeneratedOnAdd();
             builder.Property(r => r.RoomTypeId);
-            builder.Property(r => r.ImageId);
             builder.Property(r => r.DailyPrice).IsRequired();
             builder.Property(r => r.Discount);
             builder.Property(r => r.Description).IsRequired();
             builder.Property(r => r.Description).HasMaxLength(500);
+            builder.Property(r => r.CreatedDate).IsRequired();
+            builder.Property(r => r.UpdatedDate);
             builder.ToTable("Rooms");
         }
     }

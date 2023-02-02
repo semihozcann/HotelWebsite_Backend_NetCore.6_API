@@ -21,6 +21,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(b => b.CheckInDate).IsRequired();
             builder.Property(b => b.CheckOutDate).IsRequired();
             builder.Property(b => b.IsActive).IsRequired();
+            builder.Property(b => b.CreatedDate).IsRequired();
+            builder.Property(b => b.UpdatedDate);
             builder.ToTable("BookingTypes");
         }
     }

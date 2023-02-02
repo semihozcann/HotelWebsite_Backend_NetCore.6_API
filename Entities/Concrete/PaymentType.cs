@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class PaymentType : IEntity
+    public class PaymentType : BaseEntity, IEntity
     {
-        public int Id { get; set; }
+
         public string Name { get; set; }
+
 
     }
 }

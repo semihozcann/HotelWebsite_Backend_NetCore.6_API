@@ -25,6 +25,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(u => u.PasswordHash).HasMaxLength(500);
             builder.Property(u => u.PasswordSalt).IsRequired();
             builder.Property(u => u.PasswordSalt).HasMaxLength(500);
+            builder.Property(u => u.CreatedDate).IsRequired();
+            builder.Property(u => u.UpdatedDate);
             builder.ToTable("Users");
         }
     }

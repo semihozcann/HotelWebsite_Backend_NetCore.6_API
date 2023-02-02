@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Concrete
 {
-    public class User : IEntity
+    public class User : BaseEntity, IEntity
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -15,5 +15,7 @@ namespace Core.Entities.Concrete
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

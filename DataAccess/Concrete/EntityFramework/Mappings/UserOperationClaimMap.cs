@@ -17,6 +17,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
             builder.Property(u => u.UserId);
             builder.Property(u => u.OperationClaimId);
+            builder.Property(u => u.CreatedDate).IsRequired();
+            builder.Property(u => u.UpdatedDate);
             builder.ToTable("UserOperationClaims");
         }
     }

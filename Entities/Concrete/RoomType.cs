@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class RoomType :IEntity
+    public class RoomType : BaseEntity, IEntity
     {
-        public int Id { get; set; }
-        public int ImageId { get; set; }
+        public string ImageUrl { get; set; }
         public string Name { get; set; }
         public string NumberOfPeople { get; set; }
-
-        public Image image { get; set; }
-
 
     }
 }

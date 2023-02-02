@@ -30,10 +30,16 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -47,6 +53,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -73,6 +82,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varbinary(500)");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users", (string)null);
@@ -86,8 +98,14 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("OperationClaimId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -118,13 +136,18 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PaymentId")
+                    b.Property<int>("PaymentTypeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PaymentTypeId");
 
                     b.HasIndex("UserId");
 
@@ -148,6 +171,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -160,9 +186,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookingId");
+
+                    b.HasIndex("RoomTypeId");
 
                     b.ToTable("BookingTypes", (string)null);
                 });
@@ -175,40 +206,19 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("Images", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Concrete.PaymentDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("TotalPayment")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentDetails", (string)null);
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("Entities.Concrete.PaymentType", b =>
@@ -219,14 +229,36 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("PaymentTypes", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Otelde Ödeme",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Kredi Kartı İle Ödeme",
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Entities.Concrete.Room", b =>
@@ -236,6 +268,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18,2)");
@@ -248,11 +283,11 @@ namespace DataAccess.Migrations
                     b.Property<short>("Discount")
                         .HasColumnType("smallint");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -269,6 +304,9 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -278,9 +316,43 @@ namespace DataAccess.Migrations
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("RoomTypeId");
+
                     b.ToTable("RoomActivities", (string)null);
+                });
+
+            modelBuilder.Entity("Entities.Concrete.RoomImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomImages", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.RoomType", b =>
@@ -291,11 +363,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("BookingItemId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -307,16 +381,10 @@ namespace DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int?>("RoomActivityId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookingItemId");
-
-                    b.HasIndex("ImageId");
-
-                    b.HasIndex("RoomActivityId");
 
                     b.ToTable("RoomTypes", (string)null);
                 });
@@ -342,11 +410,19 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Concrete.Booking", b =>
                 {
+                    b.HasOne("Entities.Concrete.PaymentType", "paymentType")
+                        .WithMany()
+                        .HasForeignKey("PaymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Concrete.User", "user")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("paymentType");
 
                     b.Navigation("user");
                 });
@@ -356,13 +432,14 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.Concrete.Booking", null)
                         .WithMany("bookingItems")
                         .HasForeignKey("BookingId");
-                });
 
-            modelBuilder.Entity("Entities.Concrete.Image", b =>
-                {
-                    b.HasOne("Entities.Concrete.Room", null)
-                        .WithMany("images")
-                        .HasForeignKey("RoomId");
+                    b.HasOne("Entities.Concrete.RoomType", "roomType")
+                        .WithMany()
+                        .HasForeignKey("RoomTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("roomType");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Room", b =>
@@ -376,43 +453,39 @@ namespace DataAccess.Migrations
                     b.Navigation("roomType");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.RoomType", b =>
+            modelBuilder.Entity("Entities.Concrete.RoomActivity", b =>
                 {
-                    b.HasOne("Entities.Concrete.BookingItem", null)
-                        .WithMany("roomTypes")
-                        .HasForeignKey("BookingItemId");
+                    b.HasOne("Entities.Concrete.RoomType", "RoomType")
+                        .WithMany()
+                        .HasForeignKey("RoomTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.Navigation("RoomType");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.RoomImage", b =>
+                {
                     b.HasOne("Entities.Concrete.Image", "image")
                         .WithMany()
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Concrete.RoomActivity", null)
-                        .WithMany("RoomTypes")
-                        .HasForeignKey("RoomActivityId");
+                    b.HasOne("Entities.Concrete.Room", "room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("image");
+
+                    b.Navigation("room");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Booking", b =>
                 {
                     b.Navigation("bookingItems");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.BookingItem", b =>
-                {
-                    b.Navigation("roomTypes");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.Room", b =>
-                {
-                    b.Navigation("images");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.RoomActivity", b =>
-                {
-                    b.Navigation("RoomTypes");
                 });
 #pragma warning restore 612, 618
         }

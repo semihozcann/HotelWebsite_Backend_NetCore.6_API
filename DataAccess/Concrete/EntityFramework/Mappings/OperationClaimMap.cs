@@ -17,6 +17,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(o => o.Id).ValueGeneratedOnAdd();
             builder.Property(o => o.Name).IsRequired();
             builder.Property(o => o.Name).HasMaxLength(50);
+            builder.Property(o => o.CreatedDate).IsRequired();
+            builder.Property(o => o.UpdatedDate);
             builder.ToTable("OperationClaims");
         }
     }

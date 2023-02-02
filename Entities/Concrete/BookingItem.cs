@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class BookingItem : IEntity
+    public class BookingItem : BaseEntity, IEntity
     {
-        public int Id { get; set; }
         public int RoomTypeId { get; set; }
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
@@ -17,7 +16,8 @@ namespace Entities.Concrete
         public DateTime CheckOutDate { get; set; }
         public bool IsActive { get; set; }
 
-        public List<RoomType> roomTypes { get; set; }
+ 
+        public virtual RoomType roomType { get; set; }
 
 
     }

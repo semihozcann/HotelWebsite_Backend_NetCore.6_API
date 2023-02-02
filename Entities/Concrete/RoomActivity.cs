@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class RoomActivity : IEntity
+    public class RoomActivity : BaseEntity, IEntity
     {
-        public int Id { get; set; }
         public int RoomTypeId { get; set; }
         public int NumberOfRoom { get; set; }
         public DateTime Date { get; set; }
 
-        public List<RoomType> RoomTypes { get; set; }
+        public virtual RoomType RoomType { get; set; }
 
 
     }

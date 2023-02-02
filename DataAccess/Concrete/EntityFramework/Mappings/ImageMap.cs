@@ -17,6 +17,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(i => i.Id).ValueGeneratedOnAdd();
             builder.Property(i => i.ImageUrl).IsRequired();
             builder.Property(i => i.ImageUrl).HasMaxLength(500);
+            builder.Property(i => i.CreatedDate).IsRequired();
+            builder.Property(i => i.UpdatedDate);
             builder.ToTable("Images");
 
         }

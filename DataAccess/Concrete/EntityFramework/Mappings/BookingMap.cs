@@ -17,8 +17,9 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(b => b.Id).ValueGeneratedOnAdd();
             builder.Property(b => b.UserId);
             builder.Property(b => b.BookingItemId);
-            builder.Property(b => b.PaymentId);
+            builder.Property(b => b.PaymentTypeId);
             builder.Property(b => b.CreatedDate).IsRequired();
+            builder.Property(b => b.UpdatedDate);
             builder.Property(b => b.IsActive).IsRequired();
             builder.ToTable("Bookings");
         }

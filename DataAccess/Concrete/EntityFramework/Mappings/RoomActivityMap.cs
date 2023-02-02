@@ -18,6 +18,8 @@ namespace DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(r => r.RoomTypeId);
             builder.Property(r => r.NumberOfRoom).IsRequired();
             builder.Property(r => r.Date).IsRequired();
+            builder.Property(r => r.CreatedDate).IsRequired();
+            builder.Property(r => r.UpdatedDate);
             builder.ToTable("RoomActivities");
         }
     }
